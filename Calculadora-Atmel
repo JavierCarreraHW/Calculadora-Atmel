@@ -1,0 +1,33 @@
+start:
+	;Suma
+	LDI R17, 6
+	LDI R18, 2
+    ADD R18, R17
+	OUT PORTB,R18
+
+	;Resta
+	LDI R19, 6
+	LDI R20, 2
+    SUB R19, R20
+	OUT DDRB,R20
+
+	;Multiplicación
+	LDI R21, 6
+	LDI R22, 2
+	MUL R21, R22
+	OUT PORTC, R0
+
+	;Division
+	.DEF A = R23
+	.DEF B = R24
+	.DEF cociente = R25
+	LDI A, 10
+	LDI B, 5
+	CLR cociente
+	loop:		INC cociente
+				SUB A, B
+				BRCC loop
+				Dec cociente
+				ADD A,B
+				OUT DDRC, cociente
+	L1: Rjmp L1
